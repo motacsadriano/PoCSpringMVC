@@ -2,6 +2,10 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>Events APP</title>
+		<style>
+			h1,h2,h3 {text-align: center;}
+		</style>
+		
 		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -14,10 +18,14 @@
 	<body>
 		<h1>Events List</h1>
 		<br>
-		<a class="waves-effect waves-light btn" href="/saveEvent"><i class="material-icons left">add_circle_outline</i> Entry an new Event</a>
 		
-		<table>
+		<table class="container">
 			<thead>
+				<tr>
+					<th colspan="4">
+						<a class="waves-effect waves-light btn" href="/saveEvent"><i class="material-icons left">add_circle_outline</i> Entry an new Event</a>
+					</th>
+				</tr>
 				<tr>
 					<th>Name</th>
 					<th>Place</th>

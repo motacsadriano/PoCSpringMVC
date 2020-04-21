@@ -2,6 +2,9 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>New Event</title>
+		<style>
+			h1,h2,h3 {text-align: center;}
+		</style>
 		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -13,14 +16,21 @@
 		
 	</head>
 	<body>
-		<center><h1>Entry a new Event</h1></center>
+		<h1>Entry a new Event</h1>
 		<br>
 		<form class="container" method="post" id="eventForm">
-			Name: <input type="text" value="" name="name"/><br>
-			Place: <input type="text" value="" name="place"/><br>
-			Date: <input type="date" value="" name="date"/><br>
-			Hour: <input type="time" value="" name="hour"/><br>
-			
+			Name: <input type="text" value="" name="name"/>
+			<div class="row">
+				<div class="input-field col s6">
+					Place: <input type="text" value="" name="place"/>
+				</div>
+				<div class="input-field col s3">
+					Date: <input type="date" value="" name="date"/>
+				</div>
+				<div class="input-field col s3">
+					Hour: <input type="time" value="" name="hour"/>
+				</div>
+			</div>
 			<a class="waves-effect waves-light btn" onclick="document.getElementById('eventForm').submit();"><i class="material-icons left">save</i>Save</a>
 			<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">cancel</i>Cancel</a>
 		</form>
