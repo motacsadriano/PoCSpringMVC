@@ -16,20 +16,24 @@
       	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-		<h1>Events</h1>
+		<h1>Event Detail</h1>
 		<br>
-		<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">list</i> Event List</a>
-		
 		<div th:each="event : ${event}" class="container">
+			<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">list</i> Event List</a>
 			<div class="row">
 				<p>Name: <span th:text="${event.name}"></span></p>
 				<p>Place: <span th:text="${event.place}"></span></p>
 				<p>Date: <span th:text="${event.date}"></span></p>
 				<p>Hour: <span th:text="${event.hour}"></span></p>
-				
-			
 			</div>
-		
+			
+			<form method="post" id="eventDetailForm">
+				Guest Name: <input type="text" value="" name="guestName" />
+				National ID: <input type="text" value="" name="nationalId" />
+				
+				<a class="waves-effect waves-light btn" onclick="document.getElementById('eventDetailForm').submit();"><i class="material-icons left">save</i>Add Guest</a>
+				<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">cancel</i>Cancel</a>
+			</form>
 		</div>
 		
 		<!--JavaScript at end of body for optimized loading-->

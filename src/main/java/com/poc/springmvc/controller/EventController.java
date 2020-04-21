@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poc.springmvc.model.Event;
+import com.poc.springmvc.model.Guest;
 import com.poc.springmvc.repository.EventRepository;
+import com.poc.springmvc.repository.GuestRepository;
 
 @Controller
 public class EventController {
 
 	@Autowired
 	private EventRepository eventRepository;
+	
+	@Autowired
+	private GuestRepository guestRepository;
 	
 	@RequestMapping(value="/saveEvent", method = RequestMethod.GET)
 	public String form() {
@@ -39,7 +44,7 @@ public class EventController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/{id}")
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ModelAndView eventDetails(@PathVariable("id") long id) {
 		Event event = this.eventRepository.findById(id);
 		
@@ -48,4 +53,19 @@ public class EventController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.POST)
+	public String saveGuestToEvent(@PathVariable("id") long id, Guest guest) {
+		Event event = this.eventRepository.findById(id);
+		guest.setEvent(event);
+		
+		this.guestRepository.save(guest);
+		
+		return "redirect:/{id}";
+	}
+	
+	
+	
+	
+	
 }

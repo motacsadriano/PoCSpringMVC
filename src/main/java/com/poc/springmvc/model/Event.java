@@ -1,11 +1,13 @@
 package com.poc.springmvc.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Event implements Serializable {
 	private String place;
 	private String date;
 	private String hour;
+	
+	@OneToMany
+	private List<Guest> guest;
 	
 	public long getId() {
 		return id;
@@ -55,7 +60,4 @@ public class Event implements Serializable {
 	public void setHour(String hour) {
 		this.hour = hour;
 	}
-	
-		
-	
 }
