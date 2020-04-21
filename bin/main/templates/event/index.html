@@ -3,7 +3,7 @@
 	<head>
 		<title>Events APP</title>
 		<style>
-			h1,h2,h3 {text-align: center;}
+			h1,h2,h3,th {text-align: center;}
 		</style>
 		
 		
@@ -21,6 +21,11 @@
 		
 		<table class="container">
 			<thead>
+				<tr>
+					<th colspan="4">
+						<th:block th:include="event/validationMessage"></th:block>
+					</th>
+				</tr>
 				<tr>
 					<th colspan="4">
 						<a class="waves-effect waves-light btn" href="/saveEvent"><i class="material-icons left">add_circle_outline</i> Entry an new Event</a>

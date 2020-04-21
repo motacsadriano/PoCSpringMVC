@@ -18,6 +18,13 @@
 	<body>
 		<h1>Entry a new Event</h1>
 		<br>
+		<div class="row" align="center">
+			<strong>
+				<th:block th:include="event/validationMessage"></th:block>
+			</strong>
+		</div>
+		<br>
+		
 		<form class="container" method="post" id="eventForm">
 			Name: <input type="text" value="" name="name"/>
 			<div class="row">

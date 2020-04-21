@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "guest")
@@ -17,7 +18,10 @@ public class Guest implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@NotEmpty
 	private String nationalId;
+	
+	@NotEmpty
 	private String guestName;
 	
 	@ManyToOne

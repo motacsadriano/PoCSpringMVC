@@ -27,6 +27,8 @@
 				<p>Hour: <span th:text="${event.hour}"></span></p>
 			</div>
 			
+			<strong><th:block th:include="event/validationMessage"></th:block></strong>
+			
 			<form method="post" id="eventDetailForm">
 				Guest Name: <input type="text" value="" name="guestName" />
 				National ID: <input type="text" value="" name="nationalId" />
