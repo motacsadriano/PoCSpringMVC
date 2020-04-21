@@ -51,6 +51,9 @@ public class EventController {
 		ModelAndView modelAndView = new ModelAndView("event/eventDetail");
 		modelAndView.addObject("event", event);
 		
+		Iterable<Guest> guests = this.guestRepository.findByEvent(event);
+		modelAndView.addObject("guests", guests);
+		
 		return modelAndView;
 	}
 	

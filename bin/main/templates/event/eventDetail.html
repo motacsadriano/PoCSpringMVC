@@ -36,6 +36,18 @@
 			</form>
 		</div>
 		
+		<h3>Guest List</h3>
+		<div class="container" th:each="guest : ${guests}">
+			<div class="row">
+				<div class="input-field col s6">
+					<span th:text=${guest.guestName}></span>
+				</div>
+				<div class="input-field col s3">
+					<span th:text=${guest.nationalId}></span>
+				</div>
+			</div>
+		</div>
+		
 		<!--JavaScript at end of body for optimized loading-->
       	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	</body>
