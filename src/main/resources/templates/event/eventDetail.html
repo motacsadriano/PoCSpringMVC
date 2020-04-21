@@ -2,10 +2,6 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>Events APP</title>
-		<style>
-			h1,h2,h3 {text-align: center;}
-		</style>
-		
 		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -14,11 +10,13 @@
 
       	<!--Let browser know website is optimized for mobile-->
       	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      	
+      	<link rel="stylesheet" href="style/styleCss.css" />
 	</head>
 	<body>
 		<h1>Event Detail</h1>
 		<br>
-		<div th:each="event : ${event}" class="container">
+		<div th:each="event : ${event}" class="container eventDetails">
 			<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">list</i> Event List</a>
 			<div class="row">
 				<p>Name: <span th:text="${event.name}"></span></p>
@@ -28,7 +26,9 @@
 			</div>
 			
 			<strong><th:block th:include="event/validationMessage"></th:block></strong>
-			
+		</div>
+		<div class="container guestForm">
+			<h5>Add Guests to your Event</h5>
 			<form method="post" id="eventDetailForm">
 				Guest Name: <input type="text" value="" name="guestName" />
 				National ID: <input type="text" value="" name="nationalId" />
@@ -38,17 +38,23 @@
 			</form>
 		</div>
 		
-		<h3>Guest List</h3>
-		<div class="container" th:each="guest : ${guests}">
-			<div class="row">
-				<div class="input-field col s6">
-					<span th:text=${guest.guestName}></span>
-				</div>
-				<div class="input-field col s3">
-					<span th:text=${guest.nationalId}></span>
-				</div>
-			</div>
-		</div>
+		<table class="container guestTable">
+			<thead>
+				<tr>
+					<th colspan="2"><h4>Guest List</h4></th>
+				</tr>
+				<tr>
+					<th>Guest Name</th>
+					<th>National ID</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="guest : ${guests}">
+					<td class="input-field col s6"><span th:text=${guest.guestName}></span></td>
+					<td  class="input-field col s3"><span th:text=${guest.nationalId}></span></td>
+				</tr>
+			</tbody>
+		</table>
 		
 		<!--JavaScript at end of body for optimized loading-->
       	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>

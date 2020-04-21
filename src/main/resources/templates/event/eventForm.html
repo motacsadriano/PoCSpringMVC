@@ -2,9 +2,6 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>New Event</title>
-		<style>
-			h1,h2,h3 {text-align: center;}
-		</style>
 		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -13,7 +10,7 @@
 
       	<!--Let browser know website is optimized for mobile-->
       	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		
+		<link rel="stylesheet" href="style/styleCss.css" />
 	</head>
 	<body>
 		<h1>Entry a new Event</h1>
@@ -24,24 +21,24 @@
 			</strong>
 		</div>
 		<br>
-		
-		<form class="container" method="post" id="eventForm">
-			Name: <input type="text" value="" name="name"/>
-			<div class="row">
-				<div class="input-field col s6">
-					Place: <input type="text" value="" name="place"/>
+		<div class="container eventForm">
+			<form class="container" method="post" id="eventForm">
+				Name: <input type="text" value="" name="name"/>
+				<div class="row">
+					<div class="input-field col s6">
+						Place: <input type="text" value="" name="place"/>
+					</div>
+					<div class="input-field col s3">
+						Date: <input type="date" value="" name="date"/>
+					</div>
+					<div class="input-field col s3">
+						Hour: <input type="time" value="" name="hour"/>
+					</div>
 				</div>
-				<div class="input-field col s3">
-					Date: <input type="date" value="" name="date"/>
-				</div>
-				<div class="input-field col s3">
-					Hour: <input type="time" value="" name="hour"/>
-				</div>
-			</div>
-			<a class="waves-effect waves-light btn" onclick="document.getElementById('eventForm').submit();"><i class="material-icons left">save</i>Save</a>
-			<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">cancel</i>Cancel</a>
-		</form>
-		
+				<a class="waves-effect waves-light btn" onclick="document.getElementById('eventForm').submit();"><i class="material-icons left">save</i>Save</a>
+				<a class="waves-effect waves-light btn" href="/events"><i class="material-icons left">cancel</i>Cancel</a>
+			</form>
+		</div>
 		
 		<!--JavaScript at end of body for optimized loading-->
       	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
