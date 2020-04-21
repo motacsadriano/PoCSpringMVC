@@ -2,6 +2,7 @@ package com.poc.springmvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +36,16 @@ public class EventController {
 		Iterable<Event> events = this.eventRepository.findAll();
 		
 		modelAndView.addObject("events", events);
+		return modelAndView;
+	}
+	
+	@RequestMapping("/{id}")
+	public ModelAndView eventDetails(@PathVariable("id") long id) {
+		Event event = this.eventRepository.findById(id);
+		
+		ModelAndView modelAndView = new ModelAndView("event/eventDetail");
+		modelAndView.addObject("event", event);
+		
 		return modelAndView;
 	}
 }
