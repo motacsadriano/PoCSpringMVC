@@ -7,4 +7,5 @@ import com.poc.springmvc.model.Guest;
 
 public interface GuestRepository extends CrudRepository<Guest, String> {
 	Iterable<Guest> findByEvent(Event event);
+	Guest findById(long id);
 }

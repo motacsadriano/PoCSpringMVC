@@ -66,6 +66,32 @@ public class EventController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="/removeEvent", method = RequestMethod.GET)
+	public String removeEvent(long id, RedirectAttributes attributes) {
+		Event event = this.eventRepository.findById(id);
+		Iterable<Guest> iterable = this.guestRepository.findByEvent(event);
+		
+		if(iterable.spliterator().getExactSizeIfKnown() > 0) {
+			attributes.addFlashAttribute("message","This Event has guests. Please, remove the guests first");
+			return "redirect:/events";
+		}
+		
+		this.eventRepository.delete(this.eventRepository.findById(id));
+		
+		return "redirect:/events";
+	}
+	
+	@RequestMapping(value="/removeGuest", method = RequestMethod.GET)
+	public String removeGuest(long id) {
+		Guest guest = this.guestRepository.findById(id) ;
+		
+		this.guestRepository.delete(guest);
+		
+		//Event event = this.eventRepository.findById(eventId);
+		return "redirect:/"+guest.getEvent().getId();
+	}
+	
+	
 	@RequestMapping(value="/{id}", method = RequestMethod.POST)
 	public String saveGuestToEvent(@PathVariable("id") long id, @Valid Guest guest, BindingResult result, RedirectAttributes attributes) {
 		

@@ -34,6 +34,7 @@
 					<th>Place</th>
 					<th>Date</th>
 					<th>Hour</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,6 +43,7 @@
 					<td><span th:text="${event.place}"></span></td>
 					<td><span th:text="${event.date}"></span></td>
 					<td><span th:text="${event.hour}"></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#removeEvent').arg(0, event.id)).build()}"><i class="material-icons center">delete</i></a></td>
 				</tr>
 			</tbody>		
 		</table>

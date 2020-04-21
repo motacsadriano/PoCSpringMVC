@@ -24,11 +24,10 @@
 				<p>Date: <span th:text="${event.date}"></span></p>
 				<p>Hour: <span th:text="${event.hour}"></span></p>
 			</div>
-			
-			<strong><th:block th:include="event/validationMessage"></th:block></strong>
 		</div>
 		<div class="container guestForm">
 			<h5>Add Guests to your Event</h5>
+			<strong><th:block th:include="event/validationMessage"></th:block></strong>
 			<form method="post" id="eventDetailForm">
 				Guest Name: <input type="text" value="" name="guestName" />
 				National ID: <input type="text" value="" name="nationalId" />
@@ -46,12 +45,14 @@
 				<tr>
 					<th>Guest Name</th>
 					<th>National ID</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="guest : ${guests}">
 					<td class="input-field col s6"><span th:text=${guest.guestName}></span></td>
-					<td  class="input-field col s3"><span th:text=${guest.nationalId}></span></td>
+					<td class="input-field col s3"><span th:text=${guest.nationalId}></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#removeGuest').arg(0, guest.id)).build()}"><i class="material-icons center">delete</i></a></td>
 				</tr>
 			</tbody>
 		</table>
